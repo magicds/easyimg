@@ -166,7 +166,7 @@
           </h2>
           <button
             type="button"
-            @click="publicConfig.contentSafety.enabled = !publicConfig.contentSafety.enabled"
+            @click="toggleContentSafety"
             class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
             :class="publicConfig.contentSafety.enabled ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'"
           >
@@ -964,6 +964,16 @@ fetch('${baseUrl.value}/api/upload/private', {
   }).catch(() => {
     toastStore.error('复制失败')
   })
+}
+
+// 切换内容安全开关（关闭时自动保存）
+async function toggleContentSafety() {
+  publicConfig.contentSafety.enabled = !publicConfig.contentSafety.enabled
+
+  // 如果是关闭操作，自动保存配置
+  if (!publicConfig.contentSafety.enabled) {
+    await savePublicConfig()
+  }
 }
 
 // 保存公共 API 配置
