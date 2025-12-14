@@ -1,5 +1,3 @@
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
 import { verifyToken } from '../../utils/jwt'
 
 // GitHub package.json 的 URL
@@ -26,10 +24,9 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    // 读取本地 package.json 获取当前版本
-    const packageJsonPath = resolve(process.cwd(), 'package.json')
-    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'))
-    const currentVersion = packageJson.version || '1.0.0'
+    // 从 runtimeConfig 获取当前版本（构建时注入）
+    const config = useRuntimeConfig()
+    const currentVersion = config.appVersion || '1.0.0'
 
     // 从 GitHub 获取最新版本
     let latestVersion = null
