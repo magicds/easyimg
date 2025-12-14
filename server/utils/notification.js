@@ -34,7 +34,7 @@ export const NOTIFICATION_METHODS = {
 export function getDefaultNotificationConfig() {
   return {
     enabled: false,
-    method: NOTIFICATION_METHODS.WEBHOOK,
+    method: NOTIFICATION_METHODS.TELEGRAM,
     // 各类型通知开关（默认全部开启）
     types: {
       [NOTIFICATION_TYPES.LOGIN]: true,

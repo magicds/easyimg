@@ -109,10 +109,10 @@
               选择通知方式
             </label>
             <select v-model="config.method" class="input">
-              <option value="webhook">Webhook</option>
               <option value="telegram">Telegram</option>
               <option value="email">Email 邮件</option>
               <option value="serverchan">Server酱</option>
+              <option value="webhook">Webhook</option>
             </select>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
               支持 Webhook、Telegram、Email 和 Server酱 通知方式
@@ -445,7 +445,7 @@ const toastStore = useToastStore()
 // 配置状态
 const config = reactive({
   enabled: false,
-  method: 'webhook',
+  method: 'telegram',
   types: {
     login: true,
     upload: true,
