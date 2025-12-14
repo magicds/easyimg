@@ -69,7 +69,7 @@ _✨ 简单易用的个人图床系统，基于 Nuxt.js 构建 ✨_
 
 ```bash
 # 1. 创建nsfw_detector目录
-mkdir -p /root/nsfw_detector && cd /root/nsfw_detector
+mkdir -p /root/easyimg && cd /root/easyimg
 
 
 # 2. 下载docker-compose.yml文件
